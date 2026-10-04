@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가족 단톡방 피로도 진단 | 일.선.공</title>
+<meta name="description" content="가족이니까 더 어려운 것도 있습니다. 8개 질문으로 단톡방에서 느끼는 부담과 거리를 두는 실행력을 나눠서 봐요.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="일.선.공">
+<meta property="og:title" content="가족 단톡방 피로도 진단 | 일.선.공">
+<meta property="og:description" content="가족이니까 더 어려운 것도 있습니다. 8개 질문으로 단톡방에서 느끼는 부담과 거리를 두는 실행력을 나눠서 봐요.">
+<!-- 배포 후 추가: <meta property="og:image" content="https://(배포주소)/(카드이미지).png"> 와 <meta property="og:url" content="https://(배포주소)/(파일명).html"> -->
+<style>
+:root{--bg:#10172b;--card:#1a2340;--line:#2c3a62;--tx:#eef2fb;--sub:#a3b1d1;--pt:#ffc857;--pt2:#5fd3c6}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;font-size:17px;line-height:1.7;min-height:100vh;display:flex;justify-content:center}
+.wrap{width:100%;max-width:520px;padding:24px 18px 48px}
+.screen{display:none}.screen.on{display:block;animation:up .3s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.screen.on{animation:none}*{transition:none!important}}
+.badge{display:inline-block;background:rgba(255,200,87,.15);color:var(--pt);border-radius:20px;padding:4px 14px;font-size:15px;font-weight:700;margin-bottom:14px}
+h1{font-size:28px;line-height:1.4;font-weight:800}h1 span{color:var(--pt)}
+.tt2{font-size:19px;font-weight:700;color:var(--pt2);margin-top:6px}
+.sub{color:var(--sub);margin:12px 0 24px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:22px;font-size:16px;color:var(--sub)}.box b{color:var(--tx)}
+.btn{display:block;width:100%;min-height:58px;border:0;border-radius:14px;padding:16px;font-size:18px;font-weight:800;cursor:pointer;background:var(--pt);color:#1b1b1b;margin-top:10px;font-family:inherit;text-align:center;text-decoration:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--tx);font-weight:700}
+.btn:focus-visible,.opt:focus-visible{outline:3px solid var(--pt2);outline-offset:2px}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pt2),var(--pt));transition:width .3s}
+.step{color:var(--sub);font-size:15px;margin-bottom:20px}
+.q{font-size:23px;font-weight:800;line-height:1.5;margin-bottom:6px}
+.hint{color:var(--sub);font-size:15px;margin-bottom:18px;min-height:8px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1.5px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;font-size:17px;line-height:1.5;cursor:pointer;font-family:inherit;min-height:64px}
+.opt:active,.opt.sel{border-color:var(--pt);background:#24325a}
+#card{background:linear-gradient(160deg,#1c2a52,#151d36);border:1px solid var(--line);border-radius:20px;padding:26px 20px}
+.tag{color:var(--pt2);font-weight:700;font-size:15px}
+.rt{font-size:27px;font-weight:800;line-height:1.4;margin:6px 0 4px}
+.cp{color:var(--pt);font-weight:700;margin-bottom:14px}
+.g{margin:10px 0}.g b{display:flex;justify-content:space-between;font-size:16px}.g b span{color:var(--pt)}
+.g i{display:block;height:10px;border-radius:6px;background:var(--line);margin-top:4px;overflow:hidden}.g i em{display:block;height:100%;background:linear-gradient(90deg,var(--pt2),var(--pt))}
+.map{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:18px 0 6px;padding-left:22px}
+.map div.c{background:rgba(255,255,255,.05);border-radius:10px;padding:10px 8px;font-size:13px;line-height:1.4;color:var(--sub);min-height:84px;text-align:center;display:flex;align-items:center;justify-content:center}
+.map div.c.me{background:rgba(255,200,87,.16);color:var(--tx);font-weight:700}
+.dot{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--pt);border:3px solid #fff;transform:translate(-50%,-50%);box-shadow:0 0 0 6px rgba(255,200,87,.25)}
+.ylab{position:absolute;left:0;top:0;bottom:0;width:18px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;color:var(--sub);text-align:center}
+.xlab{font-size:12px;color:var(--sub);text-align:center;margin-bottom:14px;padding-left:22px}
+h3{font-size:17px;margin:16px 0 4px}ul{padding-left:20px}li{margin-bottom:6px}
+.warn{background:rgba(255,138,128,.1);border-left:4px solid #ff8a80;padding:12px 14px;border-radius:8px;margin:14px 0;font-size:16px}
+.foot{color:var(--sub);font-size:13px;line-height:1.6;margin-top:16px}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:12px 20px;border-radius:30px;font-size:15px;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:30}.toast.on{opacity:1}
+#ov{position:fixed;inset:0;background:rgba(8,12,24,.95);z-index:20;display:none;overflow:auto;padding:20px 18px}#ov.on{display:block}
+#ov .in{max-width:420px;margin:0 auto}#ov img{width:100%;display:block;border-radius:14px;margin-bottom:12px}#ov p{text-align:center;color:var(--sub);font-size:15px;margin-bottom:6px}
+.src{color:var(--sub);font-size:14px;text-align:center;margin-top:22px;line-height:1.6}.src a{color:var(--pt2);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="screen on" id="s0">
+  <div class="badge" id="bd"></div>
+  <h1 id="h1"></h1>
+  <p class="tt2" id="t2"></p>
+  <p class="sub" id="in"></p>
+  <div class="box" id="bx"></div>
+  <button class="btn" onclick="start()">진단 시작하기</button>
+  <p class="src" id="src0"></p>
+</div>
+<div class="screen" id="sq">
+  <div class="bar"><i id="pg"></i></div>
+  <div class="step" id="st"></div>
+  <div class="q" id="qt"></div>
+  <div class="hint" id="qh"></div>
+  <div id="ops"></div>
+  <button class="btn ghost" id="bk" onclick="back()">← 이전 문항</button>
+</div>
+<div class="screen" id="sr">
+  <div id="card"></div>
+  <button class="btn" onclick="saveImg()">📸 결과 이미지로 저장</button>
+  <button class="btn ghost" onclick="copyTxt()">🔗 결과 텍스트 복사해서 공유</button>
+  <a class="btn" id="cta" style="display:none" target="_blank" rel="noopener"></a>
+  <button class="btn ghost" onclick="reset()">🔄 다시 하기</button>
+</div>
+</div>
+<div id="ov" role="dialog" aria-label="결과 이미지 미리보기"><div class="in">
+  <img id="ovimg" alt="진단 결과 이미지"><p>저장이 안 되면 이미지를 길게 눌러 저장하세요</p>
+  <a class="btn" id="dl" download="진단결과.png">⬇️ 이미지 다운로드</a>
+  <button class="btn ghost" onclick="closeOv()">닫기</button>
+</div></div>
+<div class="toast" id="tt" role="status"></div>
+<script>
+/* ===== 판정 규칙 (무작위 요소 없음) =====
+ 축 A, 축 B 각각 4문항(3지선다 3개 + 양자택일 1개), 선택지 점수 2/1/0 (양자택일은 2/0), 축별 합계 0~8.
+ 축 판정: 합계 > 4 이면 '높음(h)', 합계 < 4 이면 '낮음(l)',
+          합계 == 4(동점)이면 그 축의 양자택일 문항(직접 묻는 문항) 답이 결정한다.
+ 유형 키 = (A축 h/l) + (B축 h/l). 같은 답이면 항상 같은 결과가 나온다. */
+var CONFIG={CTA_URL:"https://cafe.naver.com/ilsungong",CTA_TEXT:"일.선.공 카페에서 다른 사람들은 어떨까?",CAFE_NAME:"일.선.공",CAFE_SLOGAN:"일상의 선택을 공유합니다",CAFE_URL:"https://cafe.naver.com/ilsungong",SHARE_URL:""};
+function srcHtml(){return '출처: <a href="'+CONFIG.CAFE_URL+'" target="_blank" rel="noopener">'+CONFIG.CAFE_NAME+'</a> ('+CONFIG.CAFE_SLOGAN+')'}
+var D={"title": "가족 단톡방 피로도 진단", "brand": "가족 단톡방 피로도 진단", "badge": "📱 알림이 두려우세요", "h1": "가족 단톡방 알림,<br><span>보기도 전에 지치세요?</span>", "t2": "[가족 단톡방 피로도 진단]", "intro": "가족이니까 더 어려운 것도 있습니다. 8개 질문으로 단톡방에서 느끼는 부담과 거리를 두는 실행력을 나눠서 봐요.", "point": "알림·참여 부담과 거리두기 실행력을 함께 봐요", "yl": "부담 적음 ▼  ▲ 부담 큼", "xl": "거리두기 어려움 ◀  ▶ 거리두기 능숙", "disc": "이 진단은 심리 상태를 돌아보는 가벼운 진단이며 가족 관계의 옳고 그름을 판단하지 않습니다.", "imgdisc": "재미와 자기 점검을 위한 진단이며 투자 권유가 아닙니다", "q": [{"t": "가족 단톡방 알림이 울리면 드는 기분은?", "a": "A", "o": [["한숨부터 나온다", 2], ["그냥 그렇다", 1], ["반갑다", 0]]}, {"t": "읽씹하면 눈치가 보이나요?", "a": "A", "o": [["매우 눈치 보인다", 2], ["조금 그렇다", 1], ["전혀 아니다", 0]]}, {"t": "단톡방에서 오가는 내용(정치, 건강정보 등)이 불편한가요?", "a": "A", "o": [["자주 불편하다", 2], ["가끔 그렇다", 1], ["전혀 아니다", 0]]}, {"t": "단톡방 때문에 스트레스를 받은 적이 있나요?", "a": "A", "o": [["있다", 2], ["없다", 0]], "f": 1}, {"t": "알림을 무음으로 해두거나 필요할 때만 확인하나요?", "a": "B", "o": [["그렇게 관리한다", 2], ["가끔 그렇게 한다", 1], ["항상 바로 확인한다", 0]]}, {"t": "굳이 답하지 않아도 되는 메시지는 넘기나요?", "a": "B", "o": [["자연스럽게 넘긴다", 2], ["조금 신경 쓰이지만 넘긴다", 1], ["꼭 답해야 할 것 같다", 0]]}, {"t": "나만의 선을 가족에게 표현해본 적 있나요?", "a": "B", "o": [["표현해봤다", 2], ["생각만 해봤다", 1], ["전혀 못 해봤다", 0]]}, {"t": "불편한 주제가 나오면 자리를 피하거나 화제를 돌릴 수 있나요?", "a": "B", "o": [["그렇다", 2], ["어렵다", 0]], "f": 1}], "t": {"hh": {"n": "적당히 거리 두는 능숙형", "e": "🧘", "c": "부담은 느끼지만, 거리 두기엔 능숙하다", "d": "단톡방에서 부담을 느끼면서도 적절히 거리를 두는 유형입니다. 자신을 잘 보호하고 있어요.", "todo": ["지금의 거리두기 방식을 계속 유지하기", "비슷하게 힘들어하는 가족이 있다면 공감해주기", "꼭 필요한 소통은 놓치지 않게 확인하기"], "care": "거리두기를 잘해도 중요한 가족 소식은 가끔 챙겨보세요."}, "hl": {"n": "알림 울릴 때마다 한숨 나오는형", "e": "😮‍💨", "c": "부담은 큰데, 거리 두기가 어렵다", "d": "단톡방 부담은 크지만 거리를 두기 어려워하는 유형입니다. 매번 스트레스가 쌓일 수 있어요.", "todo": ["알림을 무음으로 해두고 정해진 시간에만 확인해보기", "모든 메시지에 답할 필요 없다는 걸 스스로에게 알려주기", "불편한 주제가 나오면 화제를 돌리는 연습해보기"], "care": "모든 메시지에 답하지 않아도 가족 관계는 유지돼요. 조금씩 거리를 연습해보세요.", "warn": "단톡방 부담은 크지만 거리를 두기 어려워하는 상태입니다. 매번 쌓이는 스트레스를 줄이려면, 알림을 무음으로 해두고 정해진 시간에만 확인하는 것부터 시작해보세요."}, "lh": {"n": "알림도 참여도 가벼운형", "e": "🍃", "c": "부담도 적고, 필요하면 거리도 잘 둔다", "d": "단톡방에 큰 부담을 느끼지 않으면서 필요하면 거리도 잘 두는 유형입니다. 편안하게 관계를 유지하고 있어요.", "todo": ["지금의 편안한 태도를 유지하기", "힘들어하는 가족이 있다면 살짝 배려해주기", "중요한 소식은 놓치지 않게 챙기기"], "care": "편안해도 가끔은 가족들의 안부를 먼저 물어보는 것도 좋아요."}, "ll": {"n": "별생각 없이 다 받아주는형", "e": "😅", "c": "부담은 적은데, 거리를 두는 연습은 안 해봤다", "d": "큰 부담은 느끼지 않지만 거리를 두는 방법은 아직 써본 적 없는 유형입니다. 지금은 괜찮아도 알아두면 좋아요.", "todo": ["알림 설정 등 거리두기 방법을 한 번 알아두기", "무리해서 답하지 않아도 된다는 걸 기억해두기", "필요할 때를 위해 나만의 선을 생각해두기"], "care": "지금은 편해도 상황이 바뀌면 거리두기 방법을 알아두면 도움이 돼요."}}};
+var Q=D.q,ans=[],cur=0;
+document.getElementById('bd').textContent=D.badge;
+document.getElementById('h1').innerHTML=D.h1;
+document.getElementById('t2').textContent=D.t2;
+document.getElementById('in').textContent=D.intro;
+document.getElementById('src0').innerHTML=srcHtml();
+document.getElementById('bx').innerHTML='⏱ 8문항 · 약 1분<br>🔒 답변은 저장·전송되지 않아요<br>🎯 <b>'+D.point+'</b>';
+function show(id){document.querySelectorAll('.screen').forEach(function(e){e.classList.remove('on')});document.getElementById(id).classList.add('on');window.scrollTo(0,0)}
+function start(){ans=[];cur=0;render();show('sq')}
+function render(){
+ var q=Q[cur];
+ document.getElementById('pg').style.width=(cur/Q.length*100)+'%';
+ document.getElementById('st').textContent=(cur+1)+' / '+Q.length;
+ document.getElementById('qt').textContent=q.t;
+ document.getElementById('qh').textContent=q.h||'';
+ document.getElementById('bk').style.visibility=cur?'visible':'hidden';
+ var h='';
+ q.o.forEach(function(o,i){h+='<button class="opt'+(ans[cur]===i?' sel':'')+'" onclick="pick('+i+')">'+o[0]+'</button>'});
+ document.getElementById('ops').innerHTML=h;
+}
+function pick(i){ans[cur]=i;setTimeout(function(){cur++;if(cur>=Q.length){result()}else{render()}},180)}
+function back(){if(cur>0){cur--;render()}}
+function calc(){
+ var S={A:0,B:0},F={A:0,B:0};
+ Q.forEach(function(q,i){var s=q.o[ans[i]][1];S[q.a]+=s;if(q.f)F[q.a]=s});
+ function hi(a){return S[a]>4||(S[a]===4&&F[a]===2)}
+ return {S:S,k:(hi('A')?'h':'l')+(hi('B')?'h':'l')};
+}
+function result(){
+ var r=calc(),S=r.S,k=r.k,t=D.t[k];
+ window._res=r;
+ var fx=0.08+(S.B/8)*0.84,y=92-(S.A/8)*84;
+ var cells=['hl','hh','ll','lh'].map(function(c){return '<div class="c'+(c===k?' me':'')+'">'+D.t[c].n+'</div>'}).join('');
+ var gs=(D.g||[]).map(function(g){var v=Math.round(S[g.ax]/8*100);if(g.inv)v=100-v;return '<div class="g"><b>'+g.l+'<span>'+v+'점</span></b><i><em style="width:'+v+'%"></em></i></div>'}).join('');
+ var li=t.todo.map(function(x){return '<li>'+x+'</li>'}).join('');
+ window._share='['+D.brand+'] 나는 「'+t.n+'」! '+t.c+' 당신은 어떤 유형? 👉 '+(CONFIG.SHARE_URL||location.href)+' | '+CONFIG.CAFE_NAME+' 카페 '+CONFIG.CAFE_URL;
+ document.getElementById('card').innerHTML=
+  '<div class="tag">진단 결과</div><div class="rt">'+t.e+' '+t.n+'</div><div class="cp">'+t.c+'</div>'+gs+
+  '<div class="map"><span class="ylab">'+D.yl+'</span>'+cells+'<span class="dot" style="left:calc(22px + (100% - 22px) * '+fx.toFixed(3)+');top:'+y.toFixed(1)+'%"></span></div>'+
+  '<div class="xlab">'+D.xl+'</div><p>'+t.d+'</p>'+(t.warn?'<div class="warn">'+t.warn+'</div>':'')+
+  '<h3>지금 하면 좋은 것 3가지</h3><ul>'+li+'</ul><h3>조심할 것</h3><p>'+t.care+'</p>'+
+  '<div class="foot">※ '+D.disc+'</div><div class="src">'+srcHtml()+'</div>';
+ var cta=document.getElementById('cta');
+ if(CONFIG.CTA_URL){cta.href=CONFIG.CTA_URL;cta.textContent=CONFIG.CTA_TEXT||'더 알아보기';cta.style.display='block'}else{cta.style.display='none'}
+ show('sr');
+}
+function toast(m){var e=document.getElementById('tt');e.textContent=m;e.classList.add('on');setTimeout(function(){e.classList.remove('on')},2200)}
+function copyTxt(){
+ var s=window._share;
+ function fb(){var t=document.createElement('textarea');t.value=s;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(t);if(ok){toast('결과가 복사되었어요')}else{window.prompt('아래 문구를 복사해 공유하세요',s)}}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){toast('결과가 복사되었어요')},fb)}else{fb()}
+}
+function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+function wl(x,text,maxW){var out=[],line='';for(var i=0;i<text.length;i++){var tst=line+text[i];if(x.measureText(tst).width>maxW&&line){out.push(line);line=text[i]}else{line=tst}}out.push(line);return out}
+function dt(x,arr,px,y,lh){arr.forEach(function(l,i){x.fillText(l,px,y+i*lh)});return y+arr.length*lh}
+function saveImg(){
+ var r=window._res;if(!r)return;
+ var S=r.S,k=r.k,t=D.t[k],W=1080,PX=90,TW=W-PX*2;
+ var tall=document.createElement('canvas');tall.width=W;tall.height=3800;
+ var x=tall.getContext('2d'),F='"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif',y,arr;
+ x.textBaseline='alphabetic';x.textAlign='center';
+ x.fillStyle='#5fd3c6';x.font='700 38px '+F;x.fillText(D.brand,W/2,110);
+ x.fillStyle='#eef2fb';x.font='120px '+F;x.fillText(t.e,W/2,270);
+ x.font='800 76px '+F;x.fillText(t.n,W/2,390);
+ x.fillStyle='#ffc857';x.font='700 40px '+F;y=dt(x,wl(x,t.c,TW),W/2,462,56);
+ (D.g||[]).forEach(function(g){
+  var v=Math.round(S[g.ax]/8*100);if(g.inv)v=100-v;
+  x.textAlign='left';x.fillStyle='#eef2fb';x.font='700 34px '+F;x.fillText(g.l,PX,y+36);
+  x.textAlign='right';x.fillStyle='#ffc857';x.fillText(v+'점',W-PX,y+36);
+  rr(x,PX,y+54,TW,16,8);x.fillStyle='#2c3a62';x.fill();
+  rr(x,PX,y+54,Math.max(16,TW*v/100),16,8);x.fillStyle='#ffc857';x.fill();
+  y+=100;
+ });
+ x.textAlign='center';
+ var mx=170,mw=740,mh=440,gap=12,my=y+10,cw=(mw-gap)/2,ch=(mh-gap)/2;
+ var cells=[['hl',0,0],['hh',1,0],['ll',0,1],['lh',1,1]];
+ x.font='700 32px '+F;
+ cells.forEach(function(e){
+  var cx0=mx+e[1]*(cw+gap),cy0=my+e[2]*(ch+gap),me=e[0]===k;
+  rr(x,cx0,cy0,cw,ch,22);x.fillStyle=me?'rgba(255,200,87,.2)':'rgba(255,255,255,.06)';x.fill();
+  if(me){x.strokeStyle='#ffc857';x.lineWidth=4;x.stroke()}
+  x.fillStyle=me?'#eef2fb':'#a3b1d1';
+  dt(x,wl(x,D.t[e[0]].n,cw-40),cx0+cw/2,cy0+ch/2+11-(wl(x,D.t[e[0]].n,cw-40).length-1)*22,44);
+ });
+ x.fillStyle='#a3b1d1';x.font='28px '+F;
+ x.save();x.translate(110,my+mh/2);x.rotate(-Math.PI/2);x.fillText(D.yl,0,0);x.restore();
+ x.fillText(D.xl,mx+mw/2,my+mh+52);
+ var dx=mx+(0.08+(S.B/8)*0.84)*mw,dy=my+(0.92-(S.A/8)*0.84)*mh;
+ x.beginPath();x.arc(dx,dy,36,0,Math.PI*2);x.fillStyle='rgba(255,200,87,.3)';x.fill();
+ x.beginPath();x.arc(dx,dy,22,0,Math.PI*2);x.fillStyle='#ffc857';x.fill();x.lineWidth=6;x.strokeStyle='#fff';x.stroke();
+ y=my+mh+52+80;
+ x.textAlign='left';x.fillStyle='#e3e9f8';x.font='34px '+F;
+ y=dt(x,wl(x,t.d,TW),PX,y,54)+10;
+ if(t.warn){
+  x.font='32px '+F;arr=wl(x,t.warn,TW-60);var bh=arr.length*52+48;
+  rr(x,PX,y,TW,bh,16);x.fillStyle='rgba(255,138,128,.14)';x.fill();x.fillStyle='#ff8a80';x.fillRect(PX,y,8,bh);
+  x.fillStyle='#ffe3e0';dt(x,arr,PX+36,y+58,52);y+=bh+30;
+ }
+ y+=26;
+ x.fillStyle='#5fd3c6';x.font='700 38px '+F;x.fillText('지금 하면 좋은 것 3가지',PX,y);y+=30;
+ x.font='34px '+F;
+ t.todo.forEach(function(item){
+  arr=wl(x,item,TW-40);x.fillStyle='#ffc857';x.fillText('•',PX,y+44);x.fillStyle='#e3e9f8';
+  y=dt(x,arr,PX+40,y+44,52)-44+16;
+ });
+ y+=24;
+ x.fillStyle='#5fd3c6';x.font='700 38px '+F;x.fillText('조심할 것',PX,y+20);y+=50;
+ x.fillStyle='#e3e9f8';x.font='34px '+F;y=dt(x,wl(x,t.care,TW),PX,y+34,54)-34+10;
+ y+=50;x.textAlign='center';
+ x.fillStyle='#eef2fb';x.font='700 40px '+F;x.fillText('나는 어떤 유형일까? 1분 진단',W/2,y+40);y+=40;
+ x.fillStyle='#5fd3c6';x.font='700 34px '+F;x.fillText('출처 · '+CONFIG.CAFE_NAME+' ('+CONFIG.CAFE_SLOGAN+')',W/2,y+50);x.fillStyle='#a3b1d1';x.font='26px '+F;x.fillText(CONFIG.CAFE_URL.replace('https://',''),W/2,y+92);y+=92;
+ x.fillStyle='#7d8bb0';x.font='24px '+F;x.fillText(D.imgdisc,W/2,y+56);y+=56;
+ var H=Math.min(3800,Math.ceil(y+60)),c=document.createElement('canvas');c.width=W;c.height=H;
+ var cx=c.getContext('2d'),g=cx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#1c2a52');g.addColorStop(1,'#10172b');
+ cx.fillStyle=g;cx.fillRect(0,0,W,H);cx.drawImage(tall,0,0);
+ var url;try{url=c.toDataURL('image/png')}catch(e){toast('이미지 생성에 실패했어요. 화면 캡처를 이용해 주세요');return}
+ document.getElementById('ovimg').src=url;document.getElementById('dl').href=url;document.getElementById('ov').classList.add('on');
+}
+function closeOv(){document.getElementById('ov').classList.remove('on')}
+function reset(){closeOv();ans=[];cur=0;show('s0')}
+</script>
+</body>
+</html>
